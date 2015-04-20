@@ -90,7 +90,7 @@ autoinstall curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-d
 autoinstall libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 curl -sSL https://get.rvm.io | bash -s stable --ruby
-Load RVM into a shell session *as a function*
+#Load RVM into a shell session *as a function*
 if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
   # First try to load from a user install
   source "$HOME/.rvm/scripts/rvm"
