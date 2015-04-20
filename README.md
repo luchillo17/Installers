@@ -16,10 +16,14 @@ Apache2
 Uninstall for MySQL # Useful for me when testing the installer, false by default.
 MySQL/Postgresql 9.3
 MySQL secure installation # Think of a password for your database
-Xclip # Needed for the SSH key to copy to clipboard
+Xclip # Needed for the SSH key to copy to clipboard to put in github, bitbucket or whatever with the configure_dev.sh
 RVM # Stands for Ruby Version Manager
 Ruby 2.2.1 # You can change the version if there's a new one or the install method change
 Bundle and Rails # You need Bundle for rails
 Heroku tool belt # Install but not configure, you're on your own on this one.
+
+# configure_dev.sh
+
+This one configure git
 
 Use with care, i tested in Ubuntu 14.10 but i'm no pro bash scripter, test in Virtual Box before or use Systemback as precaution, i don't make responsible if this breaks something just because you didn't look what it does.
