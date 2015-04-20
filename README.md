@@ -24,6 +24,8 @@ Heroku tool belt # Install but not configure, you're on your own on this one.
 
 # configure_dev.sh
 
-This one configure git
+This one configure git, create and copy SSH key and then you can paste the key in github, bitbucket or whatever.
+
+# Disclaimer
 
 Use with care, i tested in Ubuntu 14.10 but i'm no pro bash scripter, test in Virtual Box before or use Systemback as precaution, i don't make responsible if this breaks something just because you didn't look what it does.
