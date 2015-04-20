@@ -7,12 +7,8 @@ set -o errexit
 # Here's inverted commilla just in case `
 
 # Generate password somehow
-# read -p "Write default password for all installables: " password
-# echo "You chosed $password as your password"
-
-# read -p "Write default user for git: " gitusr
-# read -p "Write default email for git: " gitemail
-# echo "You chosed $gitusr as your user and $gitemail as email for git."
+read -p "Write default password for all installables: " password
+echo "You chosed $password as your password"
 
 echo "Start of install"
 autoinstall(){
@@ -40,9 +36,9 @@ autoupdate(){
 autoupdate
 apt-get upgrade
 apt-get dist-upgrade && apt-get autoremove
-if false;then
 
 # Uninstall Mysql
+if false;then
 service mysql stop  #or mysqld
 killall -9 mysql
 killall -9 mysqld
@@ -56,7 +52,7 @@ apt-get -y purge mysql-client-core-5.5
 fi
 
 # Install apache2 and mysql with secure installation
-if false;then
+if true;then
 autoinstall apache2
 echo "mysql-server-5.5 mysql-server/root_password_again password $password" | debconf-set-selections
 echo "mysql-server-5.5 mysql-server/root_password password $password" | debconf-set-selections
@@ -74,46 +70,46 @@ EOF
 fi
 
 # Install Postgresql - WIP
-# if false; then
-# echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list
-# wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | apt-key add -
-# autoupdate
-# autoinstall postgresql
-# autoinstall postgresql-9.3 libpq-dev
-# sudo -u postgres createuser $USER -s
-# fi
+if true; then
+echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list
+wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | apt-key add -
+autoupdate
+autoinstall postgresql
+autoinstall postgresql-9.3 libpq-dev
+sudo -u postgres createuser $USER -s
+fi
 
 # Install php5 and other php stuff
-#autoinstall php5 libapache2-mod-php5 php5-mysql php5-curl php5-gd php5-intl php-pear php5-imagick php5-imap php5-mcrypt php5-memcache php5-ming php5-ps php5-pspell php5-recode php5-snmp php5-sqlite php5-tidy php5-xmlrpc php5-xsl
+autoinstall php5 libapache2-mod-php5 php5-mysql php5-curl php5-gd php5-intl php-pear php5-imagick php5-imap php5-mcrypt php5-memcache php5-ming php5-ps php5-pspell php5-recode php5-snmp php5-sqlite php5-tidy php5-xmlrpc php5-xsl
 
 # Install Ruby, Rails and RVM - WIP
 if true; then
 autoinstall xclip
-# autoinstall autoconf automake bison build-essential curl git-core libapr1 libaprutil1 libc6-dev libltdl-dev libreadline6 libreadline6-dev libsqlite3-0 libsqlite3-dev libssl-dev libtool libxml2-dev libxslt-dev libxslt1-dev libyaml-dev ncurses-dev nodejs openssl sqlite3 zlib1g zlib1g-dev
-# autoinstall curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
-# autoinstall libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
-# gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-# curl -sSL https://get.rvm.io | bash -s stable --ruby
-# Load RVM into a shell session *as a function*
-# if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
-#   # First try to load from a user install
-#   source "$HOME/.rvm/scripts/rvm"
-# elif [[ -s "/usr/local/rvm/scripts/rvm" ]] ; then
-#   # Then try to load from a root install
-#   source "/usr/local/rvm/scripts/rvm"
-# else
-#   printf "ERROR: An RVM installation was not found.\n"
-# fi
-# source /usr/local/rvm/scripts/rvm
-# type rvm | head -1
-# rvm -v
-# rvm install 2.2.1
-# rvm use 2.2.1 --default
-# ruby -v
-# # echo "gem: --no-ri --no-rdoc" > ~/.gemrc
-# gem install bundler
-# gem install rails
-# wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+autoinstall autoconf automake bison build-essential curl git-core libapr1 libaprutil1 libc6-dev libltdl-dev libreadline6 libreadline6-dev libsqlite3-0 libsqlite3-dev libssl-dev libtool libxml2-dev libxslt-dev libxslt1-dev libyaml-dev ncurses-dev nodejs openssl sqlite3 zlib1g zlib1g-dev
+autoinstall curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
+autoinstall libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+curl -sSL https://get.rvm.io | bash -s stable --ruby
+Load RVM into a shell session *as a function*
+if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
+  # First try to load from a user install
+  source "$HOME/.rvm/scripts/rvm"
+elif [[ -s "/usr/local/rvm/scripts/rvm" ]] ; then
+  # Then try to load from a root install
+  source "/usr/local/rvm/scripts/rvm"
+else
+  printf "ERROR: An RVM installation was not found.\n"
+fi
+source /usr/local/rvm/scripts/rvm
+type rvm | head -1
+rvm -v
+rvm install 2.2.1
+rvm use 2.2.1 --default
+ruby -v
+echo "gem: --no-ri --no-rdoc" > ~/.gemrc
+gem install bundler # If get error try this again with --full-index or something like that
+gem install rails
+wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 fi
 
 exit 0
