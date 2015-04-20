@@ -1,0 +1,41 @@
+{
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Alignment",
+		"All Autocomplete",
+		"AutoFileName",
+		"BracketHighlighter",
+		"Can I Use",
+		"ColorPicker",
+		"CSScomb",
+		"DocBlockr",
+		"Emmet",
+		"FileDiffs",
+		"Floobits",
+		"Foundation 5 Snippets",
+		"Git",
+		"GitGutter",
+		"HTML5",
+		"jQuery",
+		"LiveReload",
+		"MarkdownEditing",
+		"Package Control",
+		"PlainTasks",
+		"Sass",
+		"SCSS",
+		"SFTP",
+		"SideBarEnhancements",
+		"Sublimall",
+		"SublimeCodeIntel",
+		"SublimeLinter-csslint",
+		"SublimeLinter-ruby",
+		"SublimeREPL",
+		"SummitLinter",
+		"Theme - Soda",
+		"Trimmer",
+		"Web Inspector"
+	]
+}
