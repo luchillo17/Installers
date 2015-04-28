@@ -20,8 +20,8 @@ git config --global user.email $gitemail
 git config --global alias.co checkout
 git config --global alias.com commit
 git config --global alias.st status
-# sudo chmod 770 -R ~/.ssh
 ssh-keygen -t rsa -C $gitemail
+# sudo chmod 770 -R ~/.ssh
 ssh-add ~/.ssh/id_rsa
 xclip -sel clip < ~/.ssh/id_rsa.pub
 echo "Paste the ssh-key we have put on your clipboard into your github account."
