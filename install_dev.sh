@@ -103,7 +103,7 @@ fi
 source /usr/local/rvm/scripts/rvm
 type rvm | head -1
 rvm -v
-rvm install 2.2.2
+rvm install ruby --latest
 rvm use 2.2.2 --default
 ruby -v
 echo "gem: --no-ri --no-rdoc" > ~/.gemrc
