@@ -30,8 +30,8 @@ autoupdate(){
 }
 
 autoupdate
-apt-get upgrade
-apt-get dist-upgrade && apt-get autoremove
+apt-get upgrade -y
+apt-get dist-upgrade -y && apt-get autoremove -y
 
 if false; then
 apt-cache policy virtualbox

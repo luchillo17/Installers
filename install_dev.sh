@@ -34,8 +34,8 @@ autoupdate(){
 }
 
 autoupdate
-apt-get upgrade
-apt-get dist-upgrade && apt-get autoremove
+apt-get upgrade -y
+apt-get dist-upgrade -y && apt-get autoremove -y
 
 # Uninstall Mysql
 if false;then
@@ -89,7 +89,7 @@ autoinstall autoconf automake bison build-essential curl git-core libapr1 libapr
 autoinstall curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
 autoinstall libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-curl -sSL https://get.rvm.io | bash -s stable --ruby
+curl -sSL https://get.rvm.io | bash -s latest --ruby
 #Load RVM into a shell session *as a function*
 if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
   # First try to load from a user install
@@ -103,8 +103,8 @@ fi
 source /usr/local/rvm/scripts/rvm
 type rvm | head -1
 rvm -v
-rvm install 2.2.1
-rvm use 2.2.1 --default
+rvm install 2.2.2
+rvm use 2.2.2 --default
 ruby -v
 echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 gem install bundler # If get error try this again with --full-index or something like that
