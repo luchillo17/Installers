@@ -25,11 +25,11 @@ autoupdate(){
 }
 
 if true;then
-#autoupdate
+autoupdate
 apt-get upgrade
 apt-get dist-upgrade && apt-get autoremove
 
-#add-apt-repository ppa:webupd8team/sublime-text-3
+add-apt-repository ppa:webupd8team/sublime-text-3
 autoupdate
 autoinstall sublime-text-installer
 wget https://packagecontrol.io/Package%20Control.sublime-package -P ~/.config/sublime-text-3/Installed\ Packages/

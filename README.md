@@ -28,4 +28,4 @@ Heroku tool belt # Install but not configure, you're on your own on this one.
 
 # configure_dev.sh
 
-This one configure git, create and copy SSH key and then you can paste the key in github, bitbucket or whatever.
+This one configure git, create and copy SSH key and then you can paste the key in github, bitbucket or whatever, also set your terminal prompt to display colors if possible.

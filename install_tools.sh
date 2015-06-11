@@ -33,7 +33,7 @@ autoupdate
 apt-get upgrade -y
 apt-get dist-upgrade -y && apt-get autoremove -y
 
-if false; then
+if true; then
 apt-cache policy virtualbox
 add-apt-repository multiverse
 autoupdate
