@@ -79,7 +79,7 @@ echo "deb http://apt.postgresql.org/pub/repos/apt/ utopic-pgdg main" >> /etc/apt
 wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | apt-key add -
 autoupdate
 sudo apt-get upgrade
-autoinstall postgresql postgresql-9.4 postgresql-client pgadmin3
+autoinstall postgresql postgresql-9.4 libpq-dev postgresql-client pgadmin3
 sudo -u postgres createuser $USER -s
 fi
 
