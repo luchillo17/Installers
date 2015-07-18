@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# Date : (2014-03-07 10-21)
+# Last revision : (2015-01-29 2-41)
+# Wine version used : 1.7.35
+# Distribution used to test : Fedora 21
+# Authors : waneck-six, Damian-LinuxFan, Tomza (pogtoma@gmail.com), gnumaru, Doctor Jellyface (doctorjellyface@riseup.net), MarsEdge
+# Contributors: Goran Grncaroski (running MonoDevelop), eje211 (crash fix), other people (testing solutions)
+# Script licence : GPL v.2
+# Only For : http://www.playonlinux.com
+# Depend :
+
+# Known Issues : You can't use Asset Store
+
+[ "$PLAYONLINUX" = "" ]  && exit 0
+source "$PLAYONLINUX/lib/sources"
+
+TITLE="Unity 3D"
+PREFIX="Unity3D"
+WINE_VERSION="1.7.44"
+
+POL_SetupWindow_Init
+POL_Debug_Init
+
+POL_SetupWindow_presentation "$TITLE" "Unity" "http://www.unity3d.com/" "Cauê Waneck, Damian-LinuxFan, Tomasz Zackiewicz, gnumaru, Doctor Jellyface, MarsEdge" "$PREFIX"
+
+#create prefix
+export WINEARCH="win32"
+POL_Wine_SelectPrefix "$PREFIX"
+POL_Wine_PrefixCreate "$WINE_VERSION"
+
+#setup prefix
+POL_Wine_InstallFonts
+POL_Call POL_Install_directx9
+POL_Call POL_Install_dotnet20
+POL_Call POL_Install_dotnet35
+POL_Call POL_Install_dotnet40
+POL_Call POL_Install_tahoma
+POL_Call POL_Install_vcrun2008
+POL_Call POL_Install_vcrun2010
+POL_Call POL_Install_mono210
+POL_Call POL_Install_d3dx9_36
+POL_Call POL_Install_d3dcompiler_43
+POL_Call POL_Install_dxdiag
+POL_Call POL_Install_dxfullsetup
+POL_Call POL_Install_physx
+POL_Call POL_Install_corefonts
+POL_Call POL_Install_msxml6
+POL_Call POL_Install_wininet
+
+#Setting OS wer
+Set_OS  "winxp" "sp3"
+
+#Setting mono forcing in MonoDevelop
+POL_Wine_OverrideDLL "native, builtin" "mscore"
+POL_Wine_OverrideDLL "builtin, native" "dnsapi"
+POL_Wine_OverrideDLL "" "mscorsvw.exe"
+
+POL_SetupWindow_browse "Please select the location of the Unity3D setup executable" "$TITLE"
+
+UNITYLOC=$APP_ANSWER
+POL_Wine $UNITYLOC
+
+POL_Shortcut "Unity.exe" "$TITLE"
+
+POL_SetupWindow_Close
+exit

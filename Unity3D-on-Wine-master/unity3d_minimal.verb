@@ -1,0 +1,70 @@
+#
+#  Filename: unity3d_minimal.verb
+#  Please don't change the filename otherwise the script won't work.
+#
+#  This script is almost the same as unity3d.verb, but tries to install as
+#  little as possible, relying on system libraries and fonts.
+#
+#  Copyright (c) 2014-2015 The Unity Wine Support Team
+#  <https://github.com/Unity3D-Wine-Support/Unity3D-on-Wine/>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#  Usage: winetricks [options] [path to verb]
+#  Example: winetricks "./unity3d_minimal.verb"
+#
+
+w_metadata unity3d_minimal apps \
+    title="Unity 3D" \
+    publisher="Unity Technologies" \
+    year="2015" \
+    media="download" \
+    file1="UnityDownloadAssistant-5.0.2f1.exe" \
+    installed_exe1="$W_PROGRAMS_WIN/Unity/Editor/Unity.exe"
+
+load_unity3d_minimal () {
+
+	# Download and run the installer
+	# 4.6.2: http://netstorage.unity3d.com/unity/UnitySetup-4.6.2.exe 998ee6e843461e2fb9e89c2dccd0721b7b2101b7
+	# 5.0.1: http://netstorage.unity3d.com/unity/5a2e8fe35a68/UnityDownloadAssistant.exe f9ac43b9455274065c2ea8e447a52509227fe784
+	w_download http://netstorage.unity3d.com/unity/0b02744d4013/UnityDownloadAssistant-5.0.2f1.exe 99380b88f2f4c68ca0d8eb3ddfd87a754255e839
+
+	cd "$W_CACHE/$W_PACKAGE"
+
+	w_warn "Now running the Unity installation. As Unity is very big, this can take more than 20 minutes. Please be patient."
+	# Run the installer
+	"$WINE" UnityDownloadAssistant-5.0.2f1.exe.exe
+
+	# Install IE 8 to fix the creating project bug
+	if w_workaround_wine_bug 26272 "Installing IE 8 to fix project creation bug" 1.7.34,
+	then
+		w_call ie8
+	fi
+
+	# Fix license bug (if it doesn't work, replace "reg" with "reg.exe")
+	if w_workaround_wine_bug 36964 "Creating a ProductId registry key" 1.7.34,
+	then
+		"$WINE" reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion" /v ProductId /t REG_SZ /d 12345-oem-0000001-54321
+	fi
+
+	# Fix bug after pressing the play button
+	if w_workaround_wine_bug 22896 "Creating FOLDERID_LocalAppDataLow" 1.7.24,
+	then
+		mkdir -p $WINEPREFIX/drive_c/users/$USER/AppData/LocalLow
+	fi
+
+	# End
+	w_declare_exe "$W_PROGRAMS_WIN/Unity/Editor" "Unity.exe"
+
+}
