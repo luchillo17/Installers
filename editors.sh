@@ -41,5 +41,6 @@ subl
 # Install extra packages
 touch ~/.config/sublime-text-3/Packages/User/Package\ Control.sublime-settings
 cp Package\ Control.sublime-settings ~/.config/sublime-text-3/Packages/User/
+cp Preferences.sublime-settings ~/.config/sublime-text-3/Packages/User/
 fi
 exit 0
