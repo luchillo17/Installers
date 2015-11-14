@@ -55,7 +55,7 @@
 #   2.  MAKE TERMINAL BETTER
 #   -----------------------------
 
-alias ls='ls -Gp'         # Preferred ‘ls’ implementation
+alias ls='ls -Gp --color=auto'         # Preferred ‘ls’ implementation
 alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
