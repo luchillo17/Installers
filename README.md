@@ -7,6 +7,12 @@ I recommend using alongside with systemback just to be careful in case it breaks
 
 Use with care, i tested in Ubuntu 14.10 and 15.04 but i'm no pro bash scripter, test in Virtual Box before or use Systemback as precaution, i don't make responsible if this breaks something just because you didn't look what it does.
 
+# Config files .bash_profile and .bashrc
+
+This files are configs for Linux and Mac, only tested in Ubuntu, most of it is inside of .bash_profile, lots of aliases and functions to make bash better.
+
+Inside .bashrc are some config like terminal colors and some exports for usual heroku binary, .bash_profile include this file so it runs on login and non logged bash session, Linux ussually just starts a non-logged session in bash, while Mac by default starts a logged terminal, including .bash_rc in .bash_profile will keep behavior consistent in logged as well as non-logged bash sessions.
+
 # editors.sh
 
 The bash file editors.sh install Sublime text 3 and Package Control, then copy the 'Package Control.sublime-settings' file inside the sublime packages and Package Control will take care of everything else on re-open of Sublime.
