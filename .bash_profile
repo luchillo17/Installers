@@ -27,6 +27,10 @@
       . ~/.bashrc
     fi
 
+    if [ -f ~/.bash_exports ]; then
+      . ~/.bash_exports
+    fi
+
 #   Change Prompt
 #   ------------------------------------------------------------
     # export PS1="\w @ \h(\u): "
@@ -81,6 +85,8 @@ trash () { command mv "$@" ~/.Trash ; }     # trash:  Moves a file to the MacOS 
 ql () { qlmanage -p "$*" >& /dev/null; }    # ql:     Opens any file in MacOS Quicklook Preview
 alias DT='tee ~/Desktop/terminalOut.txt'    # DT:     Pipe content to file on MacOS Desktop
 
+# Case insensitive by default
+cic
 
 #   lr:  Full Recursive Directory Listing
 #   ------------------------------------------
@@ -235,7 +241,7 @@ alias mountReadWrite='/sbin/mount -uw /'    # mountReadWrite:   For use when boo
 #   finderShowHidden:   Show hidden files in Finder
 #   finderHideHidden:   Hide hidden files in Finder
 #   -------------------------------------------------------------------
-    alias finderShowHidden='defaults write com.apple.finder ShowAllFiles TRUE'
+    alias finderShowHidden='defaults write com.apple.finder ShowAllFiles TRUE;defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
     alias finderHideHidden='defaults write com.apple.finder ShowAllFiles FALSE'
 
 #   cleanupLS:  Clean up LaunchServices to remove duplicates in the "Open With" menu
