@@ -58,8 +58,9 @@
 #   -----------------------------
 #   2.  MAKE TERMINAL BETTER
 #   -----------------------------
+alias ls='ls -Gp'                           # Preferred ‘ls’ implementation
+ls --color=auto &> /dev/null && alias ls='ls -Gp --color=auto' # If color is available, meaning this bash in Linux
 
-alias ls='ls -Gp'         # Preferred ‘ls’ implementation
 alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
