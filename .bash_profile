@@ -28,7 +28,7 @@
     fi
 
     if [ -f ~/.bash_exports ]; then
-        . ~/.bash_exports
+      . ~/.bash_exports
     fi
 
 #   Change Prompt
@@ -58,8 +58,9 @@
 #   -----------------------------
 #   2.  MAKE TERMINAL BETTER
 #   -----------------------------
+alias ls='ls -Gp'                           # Preferred ‘ls’ implementation
+ls --color=auto &> /dev/null && alias ls='ls -Gp --color=auto' # If color is available, meaning this bash in Linux
 
-alias ls='ls -Gp --color=auto'         # Preferred ‘ls’ implementation
 alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
@@ -84,6 +85,7 @@ mcd () { mkdir -p "$1" && cd "$1"; }        # mcd:    Makes new Dir and jumps in
 trash () { command mv "$@" ~/.Trash ; }     # trash:  Moves a file to the MacOS trash
 ql () { qlmanage -p "$*" >& /dev/null; }    # ql:     Opens any file in MacOS Quicklook Preview
 alias DT='tee ~/Desktop/terminalOut.txt'    # DT:     Pipe content to file on MacOS Desktop
+
 # Case insensitive by default
 cic
 
@@ -113,14 +115,16 @@ alias numFiles='echo $(ls -1 | wc -l)'      # numFiles:     Count of non-hidden 
 #   cdf:  'Cd's to frontmost window of MacOS Finder
 #   ------------------------------------------------------
     cdf () {
-        currFolderPath=`/usr/bin/osascript -e 'tell application "Finder"
+        currFolderPath='/usr/bin/osascript
+            tell application "Finder"
                 try
             set currFolder to (folder of the front window as alias)
                 on error
             set currFolder to (path to desktop folder as alias)
                 end try
                 POSIX path of currFolder
-            end tell'`;
+            end tell
+        '
         echo "cd to \"$currFolderPath\""
         cd "$currFolderPath"
     }
