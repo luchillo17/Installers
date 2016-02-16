@@ -11,7 +11,7 @@ Use with care, i tested in Ubuntu 14.10 and 15.04 but i'm no pro bash scripter, 
 
 This files are configs for Linux and Mac, only tested in Ubuntu, most of it is inside of .bash_profile, lots of aliases and functions to make bash better.
 
-Inside .bashrc are some config like terminal colors and some exports for usual heroku binary, .bash_profile include this file so it runs on login and non logged bash session, Linux ussually just starts a non-logged session in bash, while Mac by default starts a logged terminal, including .bash_rc in .bash_profile will keep behavior consistent in logged as well as non-logged bash sessions.
+Inside .bashrc are some config like terminal colors and some exports for usual heroku binary, `.bash_profile` include this file so it runs on login and non logged bash session, Linux ussually just starts a non-logged session in bash, while Mac by default starts a logged terminal, including `.bash_rc` in `.bash_profile` will keep behavior consistent in logged as well as non-logged bash sessions.
 
 # editors.sh
 
