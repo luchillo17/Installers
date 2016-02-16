@@ -10,7 +10,6 @@
 		"AutoAligner",
 		"AutoFileName",
 		"Autoprefixer",
-		"Bootstrap 3 Snippets",
 		"BracketHighlighter",
 		"Can I Use",
 		"caniuse_local",
@@ -19,22 +18,20 @@
 		"CSS Format",
 		"CSScomb",
 		"DocBlockr",
-		"Drupal",
 		"Emmet",
 		"FileDiffs",
 		"Floobits",
-		"Foundation 5 Snippets",
 		"Git",
 		"GitGutter",
 		"HTML5",
 		"HTMLBeautify",
-		"jQuery",
 		"JSON Reindent",
 		"JSONLint",
 		"LiveReload",
 		"MarkdownEditing",
+		"Monokai Extended",
+		"Markdown Extended"
 		"Package Control",
-		"Phpcs",
 		"PlainTasks",
 		"Pretty JSON",
 		"Sass",
@@ -53,8 +50,6 @@
 		"Text Pastry",
 		"Theme - Soda",
 		"Trimmer",
-		"Underscorejs snippets",
-		"Web Inspector",
-		"Xdebug Client"
+		"Web Inspector"
 	]
 }
