@@ -28,9 +28,10 @@
 		"JSON Reindent",
 		"JSONLint",
 		"LiveReload",
+		"Markdown Extended",
+		"Markdown Preview",
 		"MarkdownEditing",
 		"Monokai Extended",
-		"Markdown Extended"
 		"Package Control",
 		"PlainTasks",
 		"Pretty JSON",
@@ -50,6 +51,8 @@
 		"Text Pastry",
 		"Theme - Soda",
 		"Trimmer",
+		"TypeScript",
+		"TypescriptCompletion",
 		"Web Inspector"
 	]
 }
