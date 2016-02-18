@@ -115,16 +115,14 @@ alias numFiles='echo $(ls -1 | wc -l)'      # numFiles:     Count of non-hidden 
 #   cdf:  'Cd's to frontmost window of MacOS Finder
 #   ------------------------------------------------------
     cdf () {
-        currFolderPath='/usr/bin/osascript
-            tell application "Finder"
+        currFolderPath=`/usr/bin/osascript -e 'tell application "Finder"
                 try
             set currFolder to (folder of the front window as alias)
                 on error
             set currFolder to (path to desktop folder as alias)
                 end try
                 POSIX path of currFolder
-            end tell
-        '
+            end tell'`
         echo "cd to \"$currFolderPath\""
         cd "$currFolderPath"
     }
