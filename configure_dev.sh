@@ -22,6 +22,7 @@ git config --global alias.co checkout
 git config --global alias.com commit
 git config --global alias.st status
 git config --global alias.br branch
+git config --global core.autocrlf input #Proper end line management by git
 ssh-keygen -t rsa -C $gitemail
 ssh-add ~/.ssh/id_rsa
 xclip -sel clip < ~/.ssh/id_rsa.pub
