@@ -31,6 +31,10 @@
       . ~/.bash_exports
     fi
 
+    if [ -f /usr/local/etc/bash_completion ]; then
+        . /usr/local/etc/bash_completion
+    fi
+
 #   Change Prompt
 #   ------------------------------------------------------------
     # export PS1="\w @ \h(\u): "
