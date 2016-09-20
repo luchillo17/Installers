@@ -31,6 +31,10 @@
       . ~/.bash_exports
     fi
 
+    if [ -f /usr/local/etc/bash_completion ]; then
+        . /usr/local/etc/bash_completion
+    fi
+
 #   Change Prompt
 #   ------------------------------------------------------------
     # export PS1="\w @ \h(\u): "
@@ -65,7 +69,7 @@ alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
 alias ll='ls -FGlahp'                       # Preferred 'ls' implementation
-cd() { builtin cd "$@"; ll; }               # Always list directory contents upon 'cd'
+cd() { builtin cd "$@" && ll; }          # Always list directory contents upon 'cd'
 alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
 alias ..='cd ../'                           # Go back 1 directory level
 alias ...='cd ../../'                       # Go back 2 directory levels
@@ -115,16 +119,14 @@ alias numFiles='echo $(ls -1 | wc -l)'      # numFiles:     Count of non-hidden 
 #   cdf:  'Cd's to frontmost window of MacOS Finder
 #   ------------------------------------------------------
     cdf () {
-        currFolderPath='/usr/bin/osascript
-            tell application "Finder"
+        currFolderPath=`/usr/bin/osascript -e 'tell application "Finder"
                 try
             set currFolder to (folder of the front window as alias)
                 on error
             set currFolder to (path to desktop folder as alias)
                 end try
                 POSIX path of currFolder
-            end tell
-        '
+            end tell'`
         echo "cd to \"$currFolderPath\""
         cd "$currFolderPath"
     }

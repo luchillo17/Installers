@@ -38,7 +38,7 @@ apt-get upgrade -y
 apt-get dist-upgrade -y && apt-get autoremove -y
 
 # Uninstall Mysql
-if true;then
+if false;then
 service mysql stop  #or mysqld
 killall -9 mysql
 killall -9 mysqld
@@ -52,7 +52,7 @@ apt-get -y purge mysql-client-core-5.5
 fi
 
 # Install apache2 and mysql with secure installation
-if true;then
+if false;then
 autoinstall apache2
 echo "mysql-server-5.5 mysql-server/root_password_again password $password" | debconf-set-selections
 echo "mysql-server-5.5 mysql-server/root_password password $password" | debconf-set-selections
@@ -79,7 +79,7 @@ echo "deb http://apt.postgresql.org/pub/repos/apt/ utopic-pgdg main" >> /etc/apt
 wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | apt-key add -
 autoupdate
 sudo apt-get upgrade
-autoinstall postgresql postgresql-9.4 libpq-dev postgresql-client pgadmin3
+autoinstall postgresql postgresql-9.5 libpq-dev postgresql-client pgadmin3
 sudo -u postgres createuser $USER -s
 fi
 
@@ -88,7 +88,7 @@ fi
 #autoinstall php5 libapache2-mod-php5 php5-mysql php5-curl php5-gd php5-intl php-pear php5-imagick php5-imap php5-mcrypt php5-memcache php5-ming php5-ps php5-pspell php5-recode php5-snmp php5-sqlite php5-tidy php5-xmlrpc php5-xsl
 
 # Install Ruby, Rails and RVM, Make sure to use terminal as login shell in the options. - WIP
-if true; then
+if false; then
 autoinstall xclip autoconf automake bison build-essential curl libapr1 libaprutil1 libc6-dev libltdl-dev libreadline6 libreadline6-dev libsqlite3-0 libsqlite3-dev libssl-dev libtool libxml2-dev libxslt-dev libxslt1-dev libyaml-dev ncurses-dev nodejs openssl sqlite3 zlib1g zlib1g-dev git-core libreadline-dev libcurl4-openssl-dev python-software-properties libffi-dev libgdbm-dev libncurses5-dev
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 curl -sSL https://get.rvm.io | bash -s stable
