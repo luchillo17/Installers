@@ -35,6 +35,15 @@
         . /usr/local/etc/bash_completion
     fi
 
+#   Tmux history configuration
+#   ------------------------------------------------------------
+    shopt -s histappend
+    shopt -s histreedit
+    shopt -s histverify
+
+    HISTCONTROL=ignoreboth:erasedups
+    PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
 #   Change Prompt
 #   ------------------------------------------------------------
     # export PS1="\w @ \h(\u): "
@@ -45,7 +54,7 @@
 
 #   Set Default Editor (change 'Vim' to the editor of your choice)
 #   ------------------------------------------------------------
-    export EDITOR=/usr/local/bin/subl
+    export EDITOR=/usr/bin/code
 
 #   Set default blocksize for ls, df, du
 #   from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
@@ -306,3 +315,9 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 #   e.g.: hdiutil create -size 10m 10MB.dmg
 #   the above create files that are almost all zeros - if random bytes are desired
 #   then use: ~/Dev/Perl/randBytes 1048576 > 10MB.dat
+
+###-tns-completion-start-###
+if [ -f $HOME/.tnsrc ]; then
+    source $HOME/.tnsrc
+fi
+###-tns-completion-end-###
