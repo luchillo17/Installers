@@ -1,3 +1,9 @@
+export N_PREFIX="$HOME/n";
+[[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
+export YARN_PREFIX="$HOME/.yarn"
+[[ :$PATH: == *":$YARN_PREFIX/bin:"* ]] || PATH+=":$YARN_PREFIX/bin"
+
 # Android exports
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home
 export PATH=$PATH:$JAVA_HOME/bin
