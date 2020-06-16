@@ -35,7 +35,7 @@
       . /usr/local/etc/bash_completion
     fi
 
-    if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    if type -P brew && [ -f $(brew --prefix)/etc/bash_completion ]; then
       . $(brew --prefix)/etc/bash_completion
     fi
 
