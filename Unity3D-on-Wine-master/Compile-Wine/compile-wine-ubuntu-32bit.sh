@@ -25,7 +25,7 @@ sudo apt-get build-dep -y wine1.7
 #	Install build dependencies with official script if previous command failed
 cd
 
-if [ -f ./install-wine-deps.sh ]
+if [[ -f ./install-wine-deps.sh ]]
 then
 	rm ./install-wine-deps.sh
 fi

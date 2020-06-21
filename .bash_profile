@@ -23,16 +23,20 @@
 #
 #   Source Includes
 #   ------------------------------------------------------------
-    if [ -f ~/.bashrc ]; then
+    if [[ -f ~/.bashrc ]]; then
       . ~/.bashrc
     fi
 
-    if [ -f ~/.bash_exports ]; then
+    if [[ -f ~/.bash_exports ]]; then
       . ~/.bash_exports
     fi
 
-    if [ -f /usr/local/etc/bash_completion ]; then
-      . /usr/local/etc/bash_completion
+    if [[ -f /usr/share/bash-completion/bash_completion ]]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [[ -f /usr/local/etc/bash_completion ]]; then
+        . /usr/local/etc/bash_completion
+    elif [[ -f /etc/bash_completion ]]; then
+        . /etc/bash_completion
     fi
 
     if type -P brew && [ -f $(brew --prefix)/etc/bash_completion ]; then
@@ -147,7 +151,7 @@ alias numFiles='echo $(ls -1 | wc -l)'      # numFiles:     Count of non-hidden 
 #   extract:  Extract most know archives with one command
 #   ---------------------------------------------------------
     extract () {
-        if [ -f $1 ] ; then
+        if [[ -f $1 ]] ; then
           case $1 in
             *.tar.bz2)   tar xjf $1     ;;
             *.tar.gz)    tar xzf $1     ;;
@@ -321,7 +325,7 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 #   then use: ~/Dev/Perl/randBytes 1048576 > 10MB.dat
 
 ###-tns-completion-start-###
-if [ -f $HOME/.tnsrc ]; then
+if [[ -f $HOME/.tnsrc ]]; then
     source $HOME/.tnsrc
 fi
 ###-tns-completion-end-###

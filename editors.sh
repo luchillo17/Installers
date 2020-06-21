@@ -5,7 +5,7 @@ echo "Start of install"
 autoinstall(){
 	for var in "$@"; do
 		apt-get -y install $var
-		if [ $? != 0 ]; then
+		if [[ $? != 0 ]]; then
 			echo "$var not installed, error."
 			exit 1
 		else			
@@ -16,7 +16,7 @@ autoinstall(){
 
 autoupdate(){
 	apt-get -y update
-	if [ $? != 0 ]; then
+	if [[ $? != 0 ]]; then
 		echo "That update didn't work out so well. Trying some fancy stuff..."
 		sleep 3
 		rm -rf /var/lib/apt/lists/* -vf
