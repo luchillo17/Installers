@@ -225,9 +225,9 @@ ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name end
 alias myip='curl ifconfig.me'                       # myip:         Public facing IP Address
 alias netCons='lsof -i'                             # netCons:      Show all open TCP/IP sockets
 alias flushDNS='dscacheutil -flushcache'            # flushDNS:     Flush out the DNS Cache
-alias lsock='sudo /usr/sbin/lsof -i -P'             # lsock:        Display open sockets
-alias lsockU='sudo /usr/sbin/lsof -nP | grep UDP'   # lsockU:       Display only open UDP sockets
-alias lsockT='sudo /usr/sbin/lsof -nP | grep TCP'   # lsockT:       Display only open TCP sockets
+alias lsock='sudo lsof -i -P'                       # lsock:        Display open sockets
+alias lsockU='sudo lsof -nP | grep UDP'             # lsockU:       Display only open UDP sockets
+alias lsockT='sudo lsof -nP | grep TCP'             # lsockT:       Display only open TCP sockets
 alias ipInfo0='ipconfig getpacket en0'              # ipInfo0:      Get info on connections for en0
 alias ipInfo1='ipconfig getpacket en1'              # ipInfo1:      Get info on connections for en1
 alias openPorts='sudo lsof -i | grep LISTEN'        # openPorts:    All listening connections
@@ -242,7 +242,7 @@ alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rul
         echo -e "\n${RED}Current date :$NC " ; date
         echo -e "\n${RED}Machine stats :$NC " ; uptime
         echo -e "\n${RED}Current network location :$NC " ; scselect
-        echo -e "\n${RED}Public facing IP Address :$NC " ;myip
+        echo -e "\n${RED}Public facing IP Address :$NC " ; myip
         #echo -e "\n${RED}DNS Configuration:$NC " ; scutil --dns
         echo
     }
