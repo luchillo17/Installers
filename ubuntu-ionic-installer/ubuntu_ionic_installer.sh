@@ -29,7 +29,7 @@ ANDROID_SDK_X86="http://dl.google.com/android/android-sdk_r23.0.2-linux.tgz"
 NODE_X64="http://nodejs.org/dist/v0.10.32/node-v0.10.32-linux-x64.tar.gz"
 NODE_X86="http://nodejs.org/dist/v0.10.32/node-v0.10.32-linux-x86.tar.gz"
 
-if [ "$LINUX_ARCH" == "x86_64" ]; then
+if [[ "$LINUX_ARCH" == "x86_64" ]]; then
     # Add i386 architecture
     dpkg --add-architecture i386
 fi
@@ -39,7 +39,7 @@ apt-get update
 
 cd ~/Desktop
 
-if [ "$LINUX_ARCH" == "x86_64" ]; then
+if [[ "$LINUX_ARCH" == "x86_64" ]]; then
 
     wget "$NODE_X64" -O "nodejs.tgz"
     # wget "$ANDROID_SDK_X64" -O "android-sdk.tgz"
@@ -86,7 +86,7 @@ apt-get -qq -y install default-jdk ant
 
 # Set JAVA_HOME based on the default OpenJDK installed
 export JAVA_HOME="$(find /usr -type l -name 'default-java')"
-if [ "$JAVA_HOME" != "" ]; then
+if [[ "$JAVA_HOME" != "" ]]; then
     echo "export JAVA_HOME=$JAVA_HOME" >> ".profile"
 fi
 

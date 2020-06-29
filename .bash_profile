@@ -23,16 +23,20 @@
 #
 #   Source Includes
 #   ------------------------------------------------------------
-    if [ -f ~/.bashrc ]; then
+    if [[ -f ~/.bashrc ]]; then
       . ~/.bashrc
     fi
 
-    if [ -f ~/.bash_exports ]; then
+    if [[ -f ~/.bash_exports ]]; then
       . ~/.bash_exports
     fi
 
-    if [ -f /usr/local/etc/bash_completion ]; then
-      . /usr/local/etc/bash_completion
+    if [[ -f /usr/share/bash-completion/bash_completion ]]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [[ -f /usr/local/etc/bash_completion ]]; then
+        . /usr/local/etc/bash_completion
+    elif [[ -f /etc/bash_completion ]]; then
+        . /etc/bash_completion
     fi
 
     if type -P brew && [ -f $(brew --prefix)/etc/bash_completion ]; then
@@ -147,7 +151,7 @@ alias numFiles='echo $(ls -1 | wc -l)'      # numFiles:     Count of non-hidden 
 #   extract:  Extract most know archives with one command
 #   ---------------------------------------------------------
     extract () {
-        if [ -f $1 ] ; then
+        if [[ -f $1 ]] ; then
           case $1 in
             *.tar.bz2)   tar xjf $1     ;;
             *.tar.gz)    tar xzf $1     ;;
@@ -218,12 +222,12 @@ ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name end
 #   6.  NETWORKING
 #   ---------------------------
 
-alias myip='curl ip.appspot.com'                    # myip:         Public facing IP Address
+alias myip='curl ifconfig.me'                       # myip:         Public facing IP Address
 alias netCons='lsof -i'                             # netCons:      Show all open TCP/IP sockets
 alias flushDNS='dscacheutil -flushcache'            # flushDNS:     Flush out the DNS Cache
-alias lsock='sudo /usr/sbin/lsof -i -P'             # lsock:        Display open sockets
-alias lsockU='sudo /usr/sbin/lsof -nP | grep UDP'   # lsockU:       Display only open UDP sockets
-alias lsockT='sudo /usr/sbin/lsof -nP | grep TCP'   # lsockT:       Display only open TCP sockets
+alias lsock='sudo lsof -i -P'                       # lsock:        Display open sockets
+alias lsockU='sudo lsof -nP | grep UDP'             # lsockU:       Display only open UDP sockets
+alias lsockT='sudo lsof -nP | grep TCP'             # lsockT:       Display only open TCP sockets
 alias ipInfo0='ipconfig getpacket en0'              # ipInfo0:      Get info on connections for en0
 alias ipInfo1='ipconfig getpacket en1'              # ipInfo1:      Get info on connections for en1
 alias openPorts='sudo lsof -i | grep LISTEN'        # openPorts:    All listening connections
@@ -238,7 +242,7 @@ alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rul
         echo -e "\n${RED}Current date :$NC " ; date
         echo -e "\n${RED}Machine stats :$NC " ; uptime
         echo -e "\n${RED}Current network location :$NC " ; scselect
-        echo -e "\n${RED}Public facing IP Address :$NC " ;myip
+        echo -e "\n${RED}Public facing IP Address :$NC " ; myip
         #echo -e "\n${RED}DNS Configuration:$NC " ; scutil --dns
         echo
     }
@@ -321,7 +325,7 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 #   then use: ~/Dev/Perl/randBytes 1048576 > 10MB.dat
 
 ###-tns-completion-start-###
-if [ -f $HOME/.tnsrc ]; then
+if [[ -f $HOME/.tnsrc ]]; then
     source $HOME/.tnsrc
 fi
 ###-tns-completion-end-###

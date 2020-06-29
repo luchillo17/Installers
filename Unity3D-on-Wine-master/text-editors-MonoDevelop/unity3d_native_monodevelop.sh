@@ -1,7 +1,7 @@
 #!/bin/sh
-if [ -z "$1" ]; then exit 1; fi
+if [[ -z "$1" ]]; then exit 1; fi
 
-if [ "$1" == "--nologo" ]
+if [[ "$1" == "--nologo" ]]
 then
 	WIN_FILE_PATH="${3%;*}"
 	FILE_LINE="${3##*;}"
@@ -10,7 +10,7 @@ else
 	FILE_LINE="$2"
 fi
 
-if [ $FILE_LINE == "-1" ]; then FILE_LINE="0"; fi
+if [[ $FILE_LINE == "-1" ]]; then FILE_LINE="0"; fi
 
 FILE_PATH=$(winepath -u "$WIN_FILE_PATH")
 if [[ "$WIN_FILE_PATH" == *.sln ]]; then FILE_PATH=$(dirname "$FILE_PATH"); fi
@@ -32,7 +32,7 @@ then
 
 	MD_PATH="${WINEPREFIX}drive_c/Program Files/Unity/MonoDevelop/bin/MonoDevelop.exe"
 	
-	if [ "$(pidof MonoDevelop.exe)" ] && [ $PREV_SLN_NAME == $SLN_NAME ]
+	if [[ "$(pidof MonoDevelop.exe)" && $PREV_SLN_NAME == $SLN_NAME ]]
 	then wine "$MD_PATH" "$WIN_FILE_PATH;$FILE_LINE"
 	else wine "$MD_PATH" "${WIN_SLN_DIR}\\$SLN_NAME $WIN_FILE_PATH;$FILE_LINE"
 	fi
@@ -60,11 +60,11 @@ echo "$SLN_NAME" > "${SLN_DIR}/sln_name_of_last_monodevelop_call"
 
 if [[ "$WIN_FILE_PATH" == *".sln" ]]
 then
-	if [ -z "$(pidof monodevelop)" ]
+	if [[ -z "$(pidof monodevelop)" ]]
 	then /bin/monodevelop "$SLN_NAME"
 	fi
 else
-	if [ "$(pidof monodevelop)" ] && [ $PREV_SLN_NAME == $SLN_NAME ]
+	if [[ "$(pidof monodevelop)" && $PREV_SLN_NAME == $SLN_NAME ]]
 	then /bin/monodevelop "$FILE_NAME;$FILE_LINE"
 	else /bin/monodevelop "${BACKWARD_SLN_DIR}$SLN_NAME $FILE_NAME;$FILE_LINE"
 	fi

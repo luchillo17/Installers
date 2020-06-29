@@ -93,7 +93,7 @@ install_gecko()
         wget http://downloads.sourceforge.net/wine/wine_gecko-$GECKO_VERSION-$myarch$GECKO_SUFFIX
 
         gotsum=`sha1sum < wine_gecko-$GECKO_VERSION-$myarch$GECKO_SUFFIX | sed 's/(stdin)= //;s/ .*//'`
-        if [ "$gotsum"x != "$GECKO_SHA1SUM"x ]
+        if [[ "$gotsum"x != "$GECKO_SHA1SUM"x ]]
         then
            echo "sha1sum mismatch!  Please try again."
            exit 1
@@ -118,7 +118,7 @@ install_mono()
         wget http://downloads.sourceforge.net/wine/wine-mono-$1.msi
 
         gotsum=`sha1sum < wine-mono-$1.msi | sed 's/(stdin)= //;s/ .*//'`
-        if [ "$gotsum"x != "$MONO_SHA1SUM"x ]
+        if [[ "$gotsum"x != "$MONO_SHA1SUM"x ]]
         then
            echo "sha1sum mismatch!  Please try again."
            exit 1
