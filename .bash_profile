@@ -31,16 +31,19 @@
       . ~/.bash_exports
     fi
 
-    if [[ -f /usr/share/bash-completion/bash_completion ]]; then
-        . /usr/share/bash-completion/bash_completion
-    elif [[ -f /usr/local/etc/bash_completion ]]; then
-        . /usr/local/etc/bash_completion
-    elif [[ -f /etc/bash_completion ]]; then
-        . /etc/bash_completion
-    fi
-
     if type -P brew && [ -f $(brew --prefix)/etc/bash_completion ]; then
       . $(brew --prefix)/etc/bash_completion
+    fi
+
+    # Tab completion doesn't work in posix, only load completion when not posix mode
+    if ! shopt -oq posix; then
+        if [[ -f /usr/share/bash-completion/bash_completion ]]; then
+            . /usr/share/bash-completion/bash_completion
+        elif [[ -f /usr/local/etc/bash_completion ]]; then
+            . /usr/local/etc/bash_completion
+        elif [[ -f /etc/bash_completion ]]; then
+            . /etc/bash_completion
+        fi
     fi
 
 #   Tmux history configuration
