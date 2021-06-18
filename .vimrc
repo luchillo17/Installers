@@ -1,3 +1,9 @@
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin()
 Plug 'sheerun/vim-polyglot'
 Plug 'itchyny/lightline.vim'
@@ -6,7 +12,7 @@ Plug 'preservim/nerdtree'
 Plug 'tmhedberg/matchit'
 Plug 'luochen1990/rainbow'
 Plug 'airblade/vim-gitgutter'
-Plug 'ferranpm/vim-autopairs'
+Plug 'tpope/vim-endwise'
 Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
