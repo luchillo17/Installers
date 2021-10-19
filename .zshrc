@@ -150,4 +150,10 @@ setopt HIST_IGNORE_ALL_DUPS
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Systemd sourcing from ubuntu-wsl2-systemd-script
+# This source fix comes from this issues comment: https://github.com/DamionGans/ubuntu-wsl2-systemd-script/issues/37#issuecomment-838685945
+if [[ -f /usr/sbin/start-systemd-namespace ]]; then
+  source /usr/sbin/start-systemd-namespace
+fi
+
 eval $(thefuck --alias)
