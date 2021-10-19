@@ -93,6 +93,7 @@ plugins=(
   git
   gitfast
   helm
+  jsontools
   kubectl
   lxd
   microk8s
