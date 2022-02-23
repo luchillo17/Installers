@@ -101,7 +101,7 @@ plugins=(
   ng
   npm
   nvm
-  osx
+  macos
   pm2
   rails
   rvm
