@@ -158,3 +158,7 @@ if [[ -f /usr/sbin/start-systemd-namespace ]]; then
 fi
 
 eval $(thefuck --alias)
+
+if [[ -f ~/.sh_exports ]]; then
+  . ~/.sh_exports
+fi
