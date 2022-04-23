@@ -7,7 +7,7 @@ Darwin)
   export ZSH="/Users/carlos/.oh-my-zsh"
   ;;
 Linux)
-  export ZSH="/home/carlos/.oh-my-zsh"
+  export ZSH="$HOME/.oh-my-zsh"
   ;;
 esac
 # Set name of the theme to load --- if set to "random", it will
