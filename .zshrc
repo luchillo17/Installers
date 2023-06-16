@@ -116,9 +116,12 @@ plugins=(
   yarn
   z
   # Custom commands, probably need to install manually each
+  kubectl-autocomplete
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
+
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 source $ZSH/oh-my-zsh.sh
 
